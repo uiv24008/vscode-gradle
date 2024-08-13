@@ -33,3 +33,18 @@ pipelines:
           lastModifiedDate: 2024-08-13
         binskim:
           lastModifiedDate: 2024-08-13
+  11720:
+    usedNonDefaultBranch: true
+    retail:
+      source:
+        credscan:
+          lastModifiedDate: 2024-08-13
+        eslint:
+          lastModifiedDate: 2024-08-13
+        armory:
+          lastModifiedDate: 2024-08-13
+      binary:
+        credscan:
+          lastModifiedDate: 2024-08-13
+        binskim:
+          lastModifiedDate: 2024-08-13
