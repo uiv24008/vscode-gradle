@@ -59,6 +59,13 @@ export class JdtlsImporterConnector {
                     new rpc.StreamMessageReader(socket),
                     new rpc.StreamMessageWriter(socket)
                 );
+                this.importerConnection.onError((error: any) => {
+                    sendInfo("", {
+                        kind: "JdtlsImporterConnectorRpcError",
+                        error: error?.message,
+                        proxyErrorStack: error?.stack ? error.stack.toString() : "",
+                    });
+                });
                 resolve();
             });
             this.importerPipeServer.on("error", (error) => {

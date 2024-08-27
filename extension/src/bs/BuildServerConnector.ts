@@ -26,6 +26,13 @@ export class BuildServerConnector {
                 new rpc.StreamMessageReader(socket),
                 new rpc.StreamMessageWriter(socket)
             );
+            this.serverConnection.onError((error: any) => {
+                sendInfo("", {
+                    kind: "BuildServerConnectorRpcError",
+                    error: error?.message,
+                    proxyErrorStack: error?.stack ? error.stack.toString() : "",
+                });
+            });
             this.serverConnection.listen();
         });
         this.serverPipeServer.on("error", (error) => {
