@@ -257,14 +257,17 @@ export class GradleTasksTreeDataProvider implements vscode.TreeDataProvider<vsco
                 let projectTreeItem = projectTreeItemMap.get(projectPath.join(":"));
                 if (!projectTreeItem) {
                     const parentProjectPath = projectPath.length == 0 ? null : projectPath.slice(0, -1);
-                    const parentProject = parentProjectPath === null ? gradleProjectTreeItem : projectTreeItemMap.get(parentProjectPath.join(":"))
+                    const parentProject =
+                        parentProjectPath === null
+                            ? gradleProjectTreeItem
+                            : projectTreeItemMap.get(parentProjectPath.join(":"));
                     projectTreeItem = new ProjectTreeItem(
                         definition.project,
                         parentProject,
                         vscode.Uri.file(definition.buildFile)
                     );
                     if (parentProject instanceof ProjectTreeItem) {
-                        parentProject.addSubproject(projectTreeItem)
+                        parentProject.addSubproject(projectTreeItem);
                     } else {
                         gradleProjectTreeItem.addProject(projectTreeItem);
                     }

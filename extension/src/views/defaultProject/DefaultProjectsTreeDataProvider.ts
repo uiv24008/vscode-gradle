@@ -68,6 +68,6 @@ export class DefaultProjectsTreeDataProvider implements vscode.TreeDataProvider<
             path.dirname(resourceUri.fsPath),
             typeof element.label === "string" ? element.label : resourceUri.fsPath
         );
-        return [projectDependencyTreeItem, ...results ];
+        return [projectDependencyTreeItem, ...results];
     }
 }
